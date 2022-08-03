@@ -1,0 +1,13 @@
+$bg: rgb(16, 16, 16);
+.row {
+  background-color: $bg;
+  padding: 1rem;
+  h1 {
+    font-weight: 400;
+    margin: 0.3rem;
+  }
+  > div {
+    display: flex;
+    overflow-x: auto;
+  }
+}
