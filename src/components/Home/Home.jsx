@@ -3,6 +3,8 @@ import './Home.scss';
 import Row from '../Row/Row';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { BiPlay } from 'react-icons/bi';
+import { AiOutlinePlus } from 'react-icons/ai';
 const apiKey = '351ec7e0469bc090984be23f0d785874';
 const url = 'https://api.themoviedb.org/3';
 const imgUrl = 'https://image.tmdb.org/t/p/original';
@@ -67,7 +69,16 @@ function Home() {
             : 'rgb(16, 16, 16)',
         }}
       >
-        {/* <img src={`${imageUrl}/${popularMovie[0]?.poster_path}`} alt="banner" /> */}
+        {popularMovie[0] && <h1>{popularMovie[0].original_title}</h1>}
+        {popularMovie[0] && <p>{popularMovie[0].overview}</p>}
+        <div>
+          <button>
+            <BiPlay /> Play
+          </button>
+          <button>
+            My List <AiOutlinePlus />
+          </button>
+        </div>
       </div>
       <Row title={'Upcoming'} arr={upcomingMovie} />
       <Row title={'Now Playing'} arr={nowPlayingMovie} />
