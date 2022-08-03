@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../Card/Card';
 import './Row.scss';
+const imageUrl = 'https://image.tmdb.org/t/p/w500';
 
 function Row({
   title,
@@ -15,7 +16,7 @@ function Row({
       <h1>{title}</h1>
       <div>
         {arr.map((item, index) => (
-          <Card key={index} img={item.img} />
+          <Card key={index} img={`${imageUrl}/${item.poster_path}`} />
         ))}
       </div>
     </div>

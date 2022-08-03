@@ -8,7 +8,6 @@ function Header() {
   return (
     <nav className="header">
       <img src={logo} alt="Netflix Logo" />
-
       <div>
         <Link to="/tvshows">TV Shows</Link>
         <Link to="/movies">Movies</Link>
