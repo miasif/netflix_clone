@@ -11,3 +11,27 @@ $bg: rgb(16, 16, 16);
     overflow-x: auto;
   }
 }
+.row_posters {
+  display: flex;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  padding: 20px;
+}
+
+.row_poster {
+  object-fit: contain;
+  width: 100%;
+  max-height: 100px;
+  margin-right: 10px;
+  transition: transform 450ms;
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.row_posterLarge {
+  max-height: 250px;
+  &:hover {
+    transform: scale(1.09);
+  }
+}

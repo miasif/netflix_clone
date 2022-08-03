@@ -5,47 +5,19 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { BiPlay } from 'react-icons/bi';
 import { AiOutlinePlus } from 'react-icons/ai';
+import requests from '../../request';
+
 const apiKey = '351ec7e0469bc090984be23f0d785874';
 const url = 'https://api.themoviedb.org/3';
-const imgUrl = 'https://image.tmdb.org/t/p/original';
-
-const upcoming = 'upcoming';
-const popular = 'popular';
-const topRated = 'top_rated';
-const nowPlaying = 'now_playing';
 
 function Home() {
-  const [upcomingMovie, setUpcomingMovie] = React.useState([]);
-  const [popularMovie, setPopularMovie] = React.useState([]);
-  const [topRatedMovie, setTopRatedMovie] = React.useState([]);
-  const [nowPlayingMovie, setNowPlayingMovie] = React.useState([]);
+  // const [upcomingMovie, setUpcomingMovie] = React.useState([]);
+  // const [popularMovie, setPopularMovie] = React.useState([]);
+  // const [topRatedMovie, setTopRatedMovie] = React.useState([]);
+  // const [nowPlayingMovie, setNowPlayingMovie] = React.useState([]);
   const [genre, setGenre] = React.useState([]);
 
   useEffect(() => {
-    const fetchUpcoming = async () => {
-      const {
-        data: { results },
-      } = await axios.get(`${url}/movie/${upcoming}?api_key=${apiKey}`);
-      setUpcomingMovie(results);
-    };
-    const fetchPopular = async () => {
-      const {
-        data: { results },
-      } = await axios.get(`${url}/movie/${popular}?api_key=${apiKey}`);
-      setPopularMovie(results);
-    };
-    const fetchTopRated = async () => {
-      const {
-        data: { results },
-      } = await axios.get(`${url}/movie/${topRated}?api_key=${apiKey}`);
-      setTopRatedMovie(results);
-    };
-    const fetchNowPlaying = async () => {
-      const {
-        data: { results },
-      } = await axios.get(`${url}/movie/${nowPlaying}?api_key=${apiKey}`);
-      setNowPlayingMovie(results);
-    };
     const fetchgenre = async () => {
       const {
         data: { genres },
@@ -54,14 +26,10 @@ function Home() {
       // console.log(genres);
     };
     fetchgenre();
-    fetchUpcoming();
-    fetchPopular();
-    fetchTopRated();
-    fetchNowPlaying();
   }, []);
   return (
     <section className="home">
-      <div
+      {/* <div
         className="banner"
         style={{
           backgroundImage: popularMovie[0]
@@ -79,11 +47,19 @@ function Home() {
             My List <AiOutlinePlus />
           </button>
         </div>
-      </div>
-      <Row title={'Upcoming'} arr={upcomingMovie} />
-      <Row title={'Now Playing'} arr={nowPlayingMovie} />
-      <Row title={'Popular'} arr={popularMovie} />
-      <Row title={'Top Rated'} arr={topRatedMovie} />
+      </div> */}
+      <Row
+        title="NETFLIX ORIGINALS"
+        fetchUrl={requests.fetchNetflixOriginals}
+        isLargeRow
+      />
+      <Row title="Trending Now" fetchUrl={requests.fetchTrending} />
+      <Row title="Top Rated" fetchUrl={requests.fetchTopRated} />
+      <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+      <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+      <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+      <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+      <Row title="Documentaries" fetchUrl={requests.fetchDocumantaries} />
 
       <div className="genreBox">
         {genre.map((item) => (
