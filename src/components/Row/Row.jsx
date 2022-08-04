@@ -13,7 +13,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
     }
     fatchData();
   }, [fetchUrl]);
-  console.log(movies);
+  // console.log(movies);
   return (
     <div className="row">
       <h1>{title}</h1>
